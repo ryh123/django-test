@@ -1,0 +1,25 @@
+{% extends 'login/base.html' %}
+{% load staticfiles %}
+{% block title %}spider{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+          <form class='form-login' action="/spider_get_page_url/" method="post">
+              {% csrf_token %}
+              <p>请输入想爬取的网址</p>
+              <div class="form-group">
+                <input type="text" name='url' class="form-control" autofocus required>
+              </div>
+              <p>如果要爬取的网站需要登录，请在原网站登录后，将cookie填入下方</p>
+              <div class="form-group">
+                 <textarea type="text" name='cookie' class="form-control" style="height: 200px;width: 400px" ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary pull-right">提交</button>
+          </form>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}

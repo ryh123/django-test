@@ -1,0 +1,14 @@
+{% extends 'login/base.html' %}
+{% load staticfiles %}
+{% block title %}md5加密{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+        <div class="container">
+            <div class="col-md-4 col-md-offset-4">
+                <h1>{{ c }}</h1>
+            </div>
+        </div> <!-- /container -->
+{% endblock %}

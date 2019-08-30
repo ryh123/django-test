@@ -1,0 +1,21 @@
+{% extends 'login/base.html' %}
+{% load staticfiles %}
+{% block title %}ip查询{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+        <div class="container">
+            <div class="col-md-4 col-md-offset-4">
+                <table border="1">
+                    <li>ip地址：{{ ip }}</li>
+                    <li>地址：{{ address }}</li>
+                    {% for url,title in result.items %}
+                        <li>{{ url }}&nbsp;&nbsp;&nbsp;{{ title }}</li>
+                    {% endfor %}
+                </table>
+
+            </div>
+        </div> <!-- /container -->
+{% endblock %}

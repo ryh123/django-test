@@ -1,0 +1,51 @@
+{% extends 'login/base.html' %}
+{% load staticfiles %}
+{% block title %}加密解密{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+
+          <form class='form-login' action="/crypt/" method="post">
+              {% if message %}
+                <div class="alert alert-warning">{{ message }}</div>
+              {% endif %}
+              {% csrf_token %}
+              <h2 class="text-center">base64加密</h2>
+              <div class="form-group">
+                  <input type="radio" name="base" value="b64">base64<br>
+                  <input type="radio" name="base" value="b32">base32<br>
+                  <input type="radio" name="base" value="b16">base16
+                  <input type="text" name='str' class="form-control" autofocus required>
+              </div>
+              <button type="submit" class="btn btn-primary pull-right">提交</button>
+          </form>
+
+            <form class='form-login' action="/crackbase64/" method="post">
+              {% csrf_token %}
+              <h2 class="text-center">base64解密</h2>
+              <div class="form-group">
+                  <input type="radio" name="base" value="b64">base64<br>
+                  <input type="radio" name="base" value="b32">base32<br>
+                  <input type="radio" name="base" value="b16">base16
+                  <input type="text" name='str' class="form-control" autofocus required>
+              </div>
+              <button type="submit" class="btn btn-primary pull-right">提交</button>
+          </form>
+
+            <form class='form-login' action="/md5/" method="post">
+              {% csrf_token %}
+              <h2 class="text-center">md5加密</h2>
+              <div class="form-group">
+                <input type="text" name='str' class="form-control" autofocus required>
+              </div>
+              <button type="submit" class="btn btn-primary pull-right">提交</button>
+          </form>
+
+
+        </div>
+    </div> <!-- /container -->
+{% endblock %}

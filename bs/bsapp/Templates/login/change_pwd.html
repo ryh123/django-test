@@ -1,0 +1,28 @@
+{% extends 'login/base.html' %}
+{% load staticfiles %}
+{% block title %}修改密码{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+
+          <form class='form-login' action="/change/" method="post">
+              {% csrf_token %}
+              <div class="form-group">
+                  原密码:<input type="password" name='y_pwd' class="form-control" autofocus required>
+              </div>
+              <div class="form-group">
+                  新密码:<input type="password" name='x_pwd' class="form-control" autofocus required>
+              </div>
+              {% if message %}
+                <div class="alert alert-warning">{{ message }}</div>
+              {% endif %}
+              <button type="submit" class="btn btn-primary pull-right">提交</button>
+          </form>
+
+        </div>
+    </div> <!-- /container -->
+{% endblock %}

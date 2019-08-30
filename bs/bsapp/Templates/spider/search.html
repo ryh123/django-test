@@ -1,0 +1,43 @@
+{% extends 'login/base.html' %}
+{% load staticfiles %}
+{% block title %}spider{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+        <div class="col-md-4 col-md-offset-4">
+          <form class='form-login' action="/download_text/" method="post">
+              {% csrf_token %}
+              <p>请输入想要下载源码的网址</p>
+              <div class="form-group">
+                <input type="text" name='url' class="form-control" autofocus required>
+              </div>
+              <button type="submit" class="btn btn-primary pull-right">提交</button>
+          </form>
+
+            <form class='form-login' action="/text_search/" method="post">
+              {% csrf_token %}
+              <p>请输入想获取信息的网址</p>
+              <div class="form-group">
+                <input type="text" name='url' class="form-control" autofocus required>
+              </div>
+              <p>请输入正则表达式</p>
+              <div class="form-group">
+                <input type="text" name='re' class="form-control" autofocus required>
+              </div>
+              <button type="submit" class="btn btn-primary pull-right">提交</button>
+          </form>
+
+            <form class='form-login' action="/download_pic/" method="post">
+              {% csrf_token %}
+              <p>请输入想要下载图片的网址</p>
+              <div class="form-group">
+                <input type="text" name='url' class="form-control" autofocus required>
+              </div>
+              <button type="submit" class="btn btn-primary pull-right">提交</button>
+          </form>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}
